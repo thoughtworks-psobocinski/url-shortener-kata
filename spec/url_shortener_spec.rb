@@ -21,18 +21,18 @@ RSpec.describe URLShortener do
         end
     end
 
-    describe '.lengthen' do
+    describe '.retrieve' do
         it 'retrieves full-length url from the db' do
             @db['https://short_url.com'] = 'https://www.full_length_url.com'
 
-            long_url = URLShortener.lengthen('https://short_url.com')
+            long_url = URLShortener.retrieve('https://short_url.com')
 
             expect(long_url).to eq 'https://www.full_length_url.com'
         end
 
         it 'raises a "not found" error when url is not in the db' do
             expect do
-                URLShortener.lengthen('https://unknown_url.com')
+                URLShortener.retrieve('https://unknown_url.com')
             end.to raise_error('URL not found: https://unknown_url.com')
         end
     end

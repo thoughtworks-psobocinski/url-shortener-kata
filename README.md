@@ -63,9 +63,9 @@ You have inherited a `URLShortener`. Two public methods exist on the class:
 1. `URLShortener.shorten(long_url)`
     - Given a new full-length URL, it generates a shortened version of the URL and stores it in the DB
     - Given an existing full-length URL, it retrieves the shortened version of the URL from the DB
-2. `URLShortener.lengthen(short_url)`
+2. `URLShortener.retrieve(short_url)`
     - Given an existing shortened URL, retrieves the full-length URL from the DB
-    - Given a non-existant shortened YRL, raises a "not found" error
+    - Given a non-existent shortened URL, raises a "not found" error
 
 The service needs to be extended in the following way:
 
@@ -75,6 +75,6 @@ The service needs to be extended in the following way:
 The team has not yet decided on either of the above implementations. However, in preparation for the above, we wish to:
 
 1. Verify the behaviour works as documented above
-2. Refactor the internals of URLShortener so that it can be easily extended
+2. Refactor the internals of URLShortener so that it can be extended
 
 Apply TDD to achieve the above two goals.
