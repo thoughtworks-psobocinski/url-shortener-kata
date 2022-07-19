@@ -9,4 +9,18 @@ class URLShortener
 
         short_url
     end
+
+    def self.lengthen(short_url)
+        db = Daybreak::DB.new './data/urls.db'
+
+        unless db.keys.include?(short_url)
+            db.close
+            raise "URL not found: #{short_url}"
+        end
+
+        long_url = db[short_url]
+        db.close
+
+        long_url
+    end
 end
