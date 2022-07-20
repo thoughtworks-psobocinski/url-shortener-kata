@@ -39,5 +39,6 @@ RSpec.describe URLShortener do
 
     after(:all) do
         @db.close
+        File.delete('./data/urls.db')
     end
 end

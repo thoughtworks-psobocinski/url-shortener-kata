@@ -40,13 +40,6 @@ code . # vs code
 ./rspec_autorun.sh
 ```
 
-### Run a script
-
-Execute via `ruby` command, e.g:
-```
-ruby app/script.rb
-```
-
 ## Tools
 
 ### Interactive Ruby
@@ -75,6 +68,6 @@ The service needs to be extended in the following way:
 The team has not yet decided on either of the above implementations. However, in preparation for the above, we wish to:
 
 1. Verify the behaviour works as documented above
-2. Refactor the internals of URLShortener so that it can be extended
+2. Redesign `URLShortener` so that it can be extended
 
-Apply TDD to achieve the above two goals.
+_**Apply TDD to achieve the above two goals.**_
