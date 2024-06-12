@@ -54,8 +54,7 @@ irb
 You have inherited a `URLShortener`. Two public methods exist on the class:
 
 1. `URLShortener.shorten(long_url)`
-    - Given a new full-length URL, it generates a shortened version of the URL and stores it in the DB
-    - Given an existing full-length URL, it retrieves the shortened version of the URL from the DB
+    - Given a full-length URL, it generates a shortened version of the URL and stores the original URL in the DB
 2. `URLShortener.retrieve(short_url)`
     - Given an existing shortened URL, retrieves the full-length URL from the DB
     - Given a non-existent shortened URL, raises a "not found" error
