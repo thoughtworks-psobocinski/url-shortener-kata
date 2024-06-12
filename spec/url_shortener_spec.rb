@@ -18,13 +18,6 @@ RSpec.describe URLShortener do
       allow(url_generator).to receive(:generate).and_return(short_url)
     end
 
-    it 'generates a new short URL if the generated one already exists in the database' do
-      allow(url_generator).to receive(:generate).and_return(short_url, shorter_url)
-      allow(db).to receive(:keys).and_return([short_url])
-
-      expect(URLShortener.shorten(long_url, db, url_generator)).to eq(shorter_url)
-    end
-
     it 'shortens the url' do
       result = URLShortener.shorten(long_url, db, url_generator)
       expect(result.size).to be < long_url.size
@@ -33,6 +26,13 @@ RSpec.describe URLShortener do
     it 'writes shortened url to the db' do
       URLShortener.shorten(long_url, db, url_generator)
       expect(db).to have_received(:set!).with(short_url, long_url)
+    end
+
+    it 'generates a new short URL if the generated one already exists in the database' do
+      allow(url_generator).to receive(:generate).and_return(short_url, shorter_url)
+      allow(db).to receive(:keys).and_return([short_url])
+
+      expect(URLShortener.shorten(long_url, db, url_generator)).to eq(shorter_url)
     end
   end
 
