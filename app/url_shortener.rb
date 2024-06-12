@@ -3,6 +3,9 @@ require 'daybreak'
 class URLShortener
   def self.shorten(full_length_url, db, url_generator = DefaultURLGenerator.new)
     short_url = url_generator.generate
+    while db.keys.include?(short_url)
+      short_url = url_generator.generate
+    end
     db.set!(short_url, full_length_url)
     short_url
   end

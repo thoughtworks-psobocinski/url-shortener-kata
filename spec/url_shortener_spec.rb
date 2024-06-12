@@ -1,6 +1,24 @@
 require './app/url_shortener'
 require './spec_helper'
 
+describe URLShortener do
+    let(:db) { double('Database') }
+    let(:url_generator) { double('URLGenerator') }
+  
+    before do
+      allow(db).to receive(:set!)
+      allow(db).to receive(:keys).and_return([])
+    end
+  
+    it 'generates a new short URL if the generated one already exists in the database' do
+      allow(url_generator).to receive(:generate).and_return('https://conn.io/1', 'https://conn.io/2')
+  
+      allow(db).to receive(:keys).and_return(['https://conn.io/1'])
+  
+      expect(URLShortener.shorten('https://example.com', db, url_generator)).to eq('https://conn.io/2')
+    end
+  end
+
 RSpec.describe URLShortener do
     before(:each) do
         @db = Daybreak::DB.new './data/urls.db'
