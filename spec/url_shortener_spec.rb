@@ -1,4 +1,5 @@
 require './app/url_shortener'
+require './spec_helper'
 
 RSpec.describe URLShortener do
     before(:all) do
