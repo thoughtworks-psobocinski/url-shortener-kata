@@ -8,11 +8,8 @@ class URLShortener
     end
 
     def self.retrieve(short_url, db)
-        unless db.keys.include?(short_url)
-            raise "URL not found: #{short_url}"
-        end
+        raise "URL not found: #{short_url}" unless db.keys.include?(short_url)
 
-        full_length_url = db[short_url]
-        full_length_url
+        db[short_url]
     end
 end
